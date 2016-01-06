@@ -19,7 +19,7 @@ runReg <- function(id, dat) {
     invisible(list(sumfit, M))
 }
 
-plotAnscombe <- function(x, dat) {
+plotAnscombe <- function(dat=anscombe) {
 
     op <- par(mfrow=c(2,2), mar=c(3,3,0,1), oma=c(0,0,3,0))
     for (id in 1:4) {
