@@ -35,3 +35,18 @@ gs[,sum(guns_sold,na.rm=TRUE),by=year]
 
 ## two variables
 gs[,sum(guns_sold,na.rm=TRUE),by="state,year"][1:10]
+
+
+
+### Examples from vignette(s)
+## 2014 (Jan - Oct) flights data
+flights <- fread("https://github.com/arunsrinivasan/flights/wiki/NYCflights14/flights14.csv")
+
+head(flights)
+
+dim(flights)
+
+### General idea:     DT[i, j, by]
+###
+### SQL equivalent:   where i   select    group by
+
