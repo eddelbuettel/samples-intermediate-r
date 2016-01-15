@@ -7,6 +7,7 @@ gs <- fread(paste0("https://raw.githubusercontent.com/eddelbuettel/",
                    "samples-intermediate-r/master/lesson02/",
                    "ncis_bystate_bymonth_bytype.csv"))
 ## or:  gs <- fread("ncis_bystate_bymonth_bytype.csv")
+
 ## see tables already read
 tables()
 
