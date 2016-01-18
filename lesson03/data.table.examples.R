@@ -54,34 +54,34 @@ dim(flights)
 ## work on i -- Subset rows
 
 ## work on i -- select by two criteria
-ans <- flights[origin == "JFK" & month == 6L]
+flights[origin == "JFK" & month == 6L]
 
 ## work on i -- or just two rows
 flights[1:2]
 
 ## work on i -- sort by two criteria
-ans <- flights[order(origin, -dest)]
+flights[order(origin, -dest)]
 
 
 ## select in j -- select column 
-ans <- flights[, arr_delay]        # as vector
-ans <- flights[, list(arr_delay)]  # as data.table
-ans <- flights[, .(arr_delay)]     # same, shorthand
+head(flights[, arr_delay])  # as vector
+flights[, list(arr_delay)]  # as data.table
+flights[, .(arr_delay)]     # same, shorthand
 
 
 ## select in j -- select several and rename
-ans <- flights[, .(delay_arr = arr_delay, delay_dep = dep_delay)]
+flights[, .(delay_arr = arr_delay, delay_dep = dep_delay)]
 
 ## select in j -- compute
-ans <- flights[, sum((arr_delay + dep_delay) < 0)]
+flights[, sum((arr_delay + dep_delay) < 0)]
 
 ## i and j -- subset and compute
-ans <- flights[origin == "JFK" & month == 6L, 
-               .(m_arr=mean(arr_delay), m_dep=mean(dep_delay))]
+flights[origin == "JFK" & month == 6L, 
+        .(m_arr=mean(arr_delay), m_dep=mean(dep_delay))]
 
 
 ## i,j,by -- delays at JFK across year
-ans <- flights[origin == "JFK",  .(m_arr=mean(arr_delay), m_dep=mean(dep_delay)), by=month]
+flights[origin == "JFK",  .(m_arr=mean(arr_delay), m_dep=mean(dep_delay)), by=month]
 
 
 ## how many trips from JFK in June?
@@ -90,24 +90,24 @@ flights[origin == "JFK" & month == 6L, .N]             # shorthand
 
 
 ## what if we want columns by name as in data.frame?  specify 'with=FALSE'
-ans <- flights[, c("arr_delay", "dep_delay"), with=FALSE]
+flights[, c("arr_delay", "dep_delay"), with=FALSE]
 
 
 ## aggregation using by
 ## how many trips departing at each airport?
-ans <- flights[, .(.N), by=.(origin)]
+flights[, .(.N), by=.(origin)]
 
 
 ## use 'keyby' for different sort order
-ans <- flights[carrier == "AA", .(avgarr=mean(arr_delay), avgdep=mean(dep_delay)), 
-               keyby=.(origin, dest, month)]
+flights[carrier == "AA", .(avgarr=mean(arr_delay), avgdep=mean(dep_delay)), 
+        keyby=.(origin, dest, month)]
 
 ## 'chaining' to efficiently combine queries
-ans <- flights[carrier == "AA", .N, by=.(origin, dest)][order(origin, -dest)]
+flights[carrier == "AA", .N, by=.(origin, dest)][order(origin, -dest)]
 
 
 ## expressions in by
-ans <- flights[, .N, .(dep_delay>0, arr_delay>0)]
+flights[, .N, .(dep_delay>0, arr_delay>0)]
 
 
 ## .SD -- subset of data created by grouping with by,
