@@ -6,6 +6,9 @@ library(data.table)
 gs <- fread(paste0("https://raw.githubusercontent.com/eddelbuettel/",
                    "samples-intermediate-r/master/lesson02/",
                    "ncis_bystate_bymonth_bytype.csv"))
+## alternatively, read from file stored from lesson two (assumes 
+## we are one directory above)
+#gs <- fread("lesson02/ncis_bystate_bymonth_bytype.csv")
 
 ## see tables already read
 tables()
