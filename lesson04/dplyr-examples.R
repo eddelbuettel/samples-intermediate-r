@@ -3,7 +3,7 @@ library(dplyr)
 ## from lesson 3
 ### Examples from vignette(s)
 ## 2014 (Jan - Oct) flights data
-flights <- data.table::fread("https://github.com/arunsrinivasan/flights/wiki/NYCflights14/flights14.csv")
+flights <- data.table::fread("https://github.com/arunsrinivasan/flights/wiki/NYCflights14/flights14.csv", showProgress=FALSE)
 
 ## a data.frame replacement / alternative from dplyr
 tbl <- as.tbl(flights)
